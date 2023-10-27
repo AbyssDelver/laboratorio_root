@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.dir/particletype.cpp.o -c /Users/liamcavini/laboratorio/lab1/particletype.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/particletype.cpp"
+},
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.dir/resonancetype.cpp.o -c /Users/liamcavini/laboratorio/lab1/resonancetype.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/resonancetype.cpp"
+},
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.dir/particle.cpp.o -c /Users/liamcavini/laboratorio/lab1/particle.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/particle.cpp"
+},
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.t.dir/particletest.cpp.o -c /Users/liamcavini/laboratorio/lab1/particletest.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/particletest.cpp"
+},
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.t.dir/particletype.cpp.o -c /Users/liamcavini/laboratorio/lab1/particletype.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/particletype.cpp"
+},
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.t.dir/resonancetype.cpp.o -c /Users/liamcavini/laboratorio/lab1/resonancetype.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/resonancetype.cpp"
+},
+{
+  "directory": "/Users/liamcavini/laboratorio/lab1/build",
+  "command": "/usr/bin/clang++    -Wall -Wextra -g -fsanitize=address,undefined -fno-omit-frame-pointer -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk -std=gnu++17 -o CMakeFiles/lab1.t.dir/particle.cpp.o -c /Users/liamcavini/laboratorio/lab1/particle.cpp",
+  "file": "/Users/liamcavini/laboratorio/lab1/particle.cpp"
+}
+]
