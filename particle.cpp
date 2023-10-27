@@ -1,5 +1,6 @@
 #include "particle.hpp"
 
+#include <cmath>
 #include <cstring>
 #include <iostream>
 
@@ -69,12 +70,22 @@ void Particle::setIndex(char* name) {
   }
 }
 
-  double Particle::getPx() const{
-    return fPx;
-  };
-  double Particle::getPy() const{
-    return fPy;
-  };
-  double Particle::getPz() const{
-    return fPz;
-  };
+double Particle::getPx() const { return fPx; };
+double Particle::getPy() const { return fPy; };
+double Particle::getPz() const { return fPz; };
+double Particle::getMass() const { return fParticleType[fIndex]->getMass(); }
+double Particle::getEnergy() const {
+  double mass = fParticleType[fIndex]->getMass();
+  return std::sqrt(mass * mass + (fPx * fPx + fPy * fPy + fPz * fPz));
+}
+double Particle::invMass(Particle& p) const{
+    double momentumSum = (fPx+p.fPx)*(fPx+p.fPx)+(fPy+p.fPy)*(fPy+p.fPy)+(fPz+p.fPz)*(fPz+p.fPz);
+    double energySum =(this->getEnergy() +p.getEnergy())*(this->getEnergy() +p.getEnergy());
+    return std::sqrt(energySum - momentumSum);
+}
+void Particle::setP(double Px, double Py, double Pz)
+{
+    fPx = Px;
+    fPy = Py;
+    fPz = Pz;
+}

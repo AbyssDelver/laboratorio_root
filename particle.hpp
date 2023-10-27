@@ -16,6 +16,10 @@ class Particle {
   double getPx() const;
   double getPy() const;
   double getPz() const;
+  double getMass() const;
+  double getEnergy() const;
+  double invMass(Particle& p) const;
+  void setP(double px,double py,double pz);
 
  private:
   // todo: check if static is right.

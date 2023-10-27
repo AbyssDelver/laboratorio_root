@@ -4,7 +4,10 @@ class ParticleType{
 
     public:
     ParticleType(char*, double, int);
+
     virtual void print() const;
+    virtual ~ParticleType();
+
     char* getName() const;
     double getMass() const;
     int getCharge() const;

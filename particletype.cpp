@@ -6,6 +6,9 @@ ParticleType::ParticleType(char* name, double mass, int charge): fName{name}, fM
 char* ParticleType::getName() const{
     return fName;
 }
+
+ParticleType::~ParticleType() = default;
+
 double ParticleType::getMass() const{
     return fMass;
 }
