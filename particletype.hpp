@@ -11,6 +11,7 @@ class ParticleType{
     char* getName() const;
     double getMass() const;
     int getCharge() const;
+    int getWidth() const;
 
     private:
     char* fName;

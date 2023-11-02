@@ -3,12 +3,13 @@
 #include "particletype.hpp"
 #include "resonancetype.hpp"
 
+//todo: change chars to const chars.
 class Particle {
   // todo: make private
  public:
-  Particle(char*, double, double, double);
+  Particle(char* = nullptr, double = 0., double = 0., double = 0.);
   int getIndex() const;
-  static void addParticleType(char*, double, int, double);
+  static void addParticleType(char*, double, int, double width = 0.);
   void setIndex(int index);
   void setIndex(char* name);
   static void printParticleType();
@@ -19,7 +20,9 @@ class Particle {
   double getMass() const;
   double getEnergy() const;
   double invMass(Particle& p) const;
-  void setP(double px,double py,double pz);
+  void setP(double px, double py, double pz);
+  int Decay2body(Particle& dau1, Particle& dau2) const;
+  void Boost(double bx, double by, double bz);
 
  private:
   // todo: check if static is right.

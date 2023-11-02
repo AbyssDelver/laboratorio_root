@@ -516,110 +516,134 @@ lab1.t/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/build
 .PHONY : lab1.t/fast
 
-particle.o: particle.cpp.o
+main.o: main.cxx.o
+.PHONY : main.o
+
+# target to build an object file
+main.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/main.cxx.o
+.PHONY : main.cxx.o
+
+main.i: main.cxx.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/main.cxx.i
+.PHONY : main.cxx.i
+
+main.s: main.cxx.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/main.cxx.s
+.PHONY : main.cxx.s
+
+particle.o: particle.cxx.o
 .PHONY : particle.o
 
 # target to build an object file
-particle.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particle.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particle.cpp.o
-.PHONY : particle.cpp.o
+particle.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particle.cxx.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particle.cxx.o
+.PHONY : particle.cxx.o
 
-particle.i: particle.cpp.i
+particle.i: particle.cxx.i
 .PHONY : particle.i
 
 # target to preprocess a source file
-particle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particle.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particle.cpp.i
-.PHONY : particle.cpp.i
+particle.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particle.cxx.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particle.cxx.i
+.PHONY : particle.cxx.i
 
-particle.s: particle.cpp.s
+particle.s: particle.cxx.s
 .PHONY : particle.s
 
 # target to generate assembly for a file
-particle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particle.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particle.cpp.s
-.PHONY : particle.cpp.s
+particle.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particle.cxx.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particle.cxx.s
+.PHONY : particle.cxx.s
 
-particletest.o: particletest.cpp.o
+particletest.o: particletest.cxx.o
 .PHONY : particletest.o
 
 # target to build an object file
-particletest.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletest.cpp.o
-.PHONY : particletest.cpp.o
+particletest.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletest.cxx.o
+.PHONY : particletest.cxx.o
 
-particletest.i: particletest.cpp.i
+particletest.i: particletest.cxx.i
 .PHONY : particletest.i
 
 # target to preprocess a source file
-particletest.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletest.cpp.i
-.PHONY : particletest.cpp.i
+particletest.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletest.cxx.i
+.PHONY : particletest.cxx.i
 
-particletest.s: particletest.cpp.s
+particletest.s: particletest.cxx.s
 .PHONY : particletest.s
 
 # target to generate assembly for a file
-particletest.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletest.cpp.s
-.PHONY : particletest.cpp.s
+particletest.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletest.cxx.s
+.PHONY : particletest.cxx.s
 
-particletype.o: particletype.cpp.o
+particletype.o: particletype.cxx.o
 .PHONY : particletype.o
 
 # target to build an object file
-particletype.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particletype.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletype.cpp.o
-.PHONY : particletype.cpp.o
+particletype.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particletype.cxx.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletype.cxx.o
+.PHONY : particletype.cxx.o
 
-particletype.i: particletype.cpp.i
+particletype.i: particletype.cxx.i
 .PHONY : particletype.i
 
 # target to preprocess a source file
-particletype.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particletype.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletype.cpp.i
-.PHONY : particletype.cpp.i
+particletype.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particletype.cxx.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletype.cxx.i
+.PHONY : particletype.cxx.i
 
-particletype.s: particletype.cpp.s
+particletype.s: particletype.cxx.s
 .PHONY : particletype.s
 
 # target to generate assembly for a file
-particletype.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particletype.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletype.cpp.s
-.PHONY : particletype.cpp.s
+particletype.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/particletype.cxx.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/particletype.cxx.s
+.PHONY : particletype.cxx.s
 
-resonancetype.o: resonancetype.cpp.o
+resonancetype.o: resonancetype.cxx.o
 .PHONY : resonancetype.o
 
 # target to build an object file
-resonancetype.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/resonancetype.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/resonancetype.cpp.o
-.PHONY : resonancetype.cpp.o
+resonancetype.cxx.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/resonancetype.cxx.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/resonancetype.cxx.o
+.PHONY : resonancetype.cxx.o
 
-resonancetype.i: resonancetype.cpp.i
+resonancetype.i: resonancetype.cxx.i
 .PHONY : resonancetype.i
 
 # target to preprocess a source file
-resonancetype.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/resonancetype.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/resonancetype.cpp.i
-.PHONY : resonancetype.cpp.i
+resonancetype.cxx.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/resonancetype.cxx.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/resonancetype.cxx.i
+.PHONY : resonancetype.cxx.i
 
-resonancetype.s: resonancetype.cpp.s
+resonancetype.s: resonancetype.cxx.s
 .PHONY : resonancetype.s
 
 # target to generate assembly for a file
-resonancetype.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/resonancetype.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/resonancetype.cpp.s
-.PHONY : resonancetype.cpp.s
+resonancetype.cxx.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/resonancetype.cxx.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.t.dir/build.make CMakeFiles/lab1.t.dir/resonancetype.cxx.s
+.PHONY : resonancetype.cxx.s
 
 # Help Target
 help:
@@ -660,6 +684,9 @@ help:
 	@echo "... NightlyUpdate"
 	@echo "... lab1"
 	@echo "... lab1.t"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 	@echo "... particle.o"
 	@echo "... particle.i"
 	@echo "... particle.s"

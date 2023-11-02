@@ -8,9 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/liamcavini/laboratorio/lab1/particle.cpp" "CMakeFiles/lab1.dir/particle.cpp.o" "gcc" "CMakeFiles/lab1.dir/particle.cpp.o.d"
-  "/Users/liamcavini/laboratorio/lab1/particletype.cpp" "CMakeFiles/lab1.dir/particletype.cpp.o" "gcc" "CMakeFiles/lab1.dir/particletype.cpp.o.d"
-  "/Users/liamcavini/laboratorio/lab1/resonancetype.cpp" "CMakeFiles/lab1.dir/resonancetype.cpp.o" "gcc" "CMakeFiles/lab1.dir/resonancetype.cpp.o.d"
+  "/Users/liamcavini/laboratorio/lab1/main.cxx" "CMakeFiles/lab1.dir/main.cxx.o" "gcc" "CMakeFiles/lab1.dir/main.cxx.o.d"
+  "/Users/liamcavini/laboratorio/lab1/particle.cxx" "CMakeFiles/lab1.dir/particle.cxx.o" "gcc" "CMakeFiles/lab1.dir/particle.cxx.o.d"
+  "/Users/liamcavini/laboratorio/lab1/particletype.cxx" "CMakeFiles/lab1.dir/particletype.cxx.o" "gcc" "CMakeFiles/lab1.dir/particletype.cxx.o.d"
+  "/Users/liamcavini/laboratorio/lab1/resonancetype.cxx" "CMakeFiles/lab1.dir/resonancetype.cxx.o" "gcc" "CMakeFiles/lab1.dir/resonancetype.cxx.o.d"
   )
 
 # Targets to which this target links.

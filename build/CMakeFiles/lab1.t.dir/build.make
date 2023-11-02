@@ -69,76 +69,76 @@ include CMakeFiles/lab1.t.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab1.t.dir/flags.make
 
-CMakeFiles/lab1.t.dir/particletest.cpp.o: CMakeFiles/lab1.t.dir/flags.make
-CMakeFiles/lab1.t.dir/particletest.cpp.o: ../particletest.cpp
-CMakeFiles/lab1.t.dir/particletest.cpp.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab1.t.dir/particletest.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/particletest.cpp.o -MF CMakeFiles/lab1.t.dir/particletest.cpp.o.d -o CMakeFiles/lab1.t.dir/particletest.cpp.o -c /Users/liamcavini/laboratorio/lab1/particletest.cpp
+CMakeFiles/lab1.t.dir/particletest.cxx.o: CMakeFiles/lab1.t.dir/flags.make
+CMakeFiles/lab1.t.dir/particletest.cxx.o: ../particletest.cxx
+CMakeFiles/lab1.t.dir/particletest.cxx.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab1.t.dir/particletest.cxx.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/particletest.cxx.o -MF CMakeFiles/lab1.t.dir/particletest.cxx.o.d -o CMakeFiles/lab1.t.dir/particletest.cxx.o -c /Users/liamcavini/laboratorio/lab1/particletest.cxx
 
-CMakeFiles/lab1.t.dir/particletest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/particletest.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/particletest.cpp > CMakeFiles/lab1.t.dir/particletest.cpp.i
+CMakeFiles/lab1.t.dir/particletest.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/particletest.cxx.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/particletest.cxx > CMakeFiles/lab1.t.dir/particletest.cxx.i
 
-CMakeFiles/lab1.t.dir/particletest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/particletest.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/particletest.cpp -o CMakeFiles/lab1.t.dir/particletest.cpp.s
+CMakeFiles/lab1.t.dir/particletest.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/particletest.cxx.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/particletest.cxx -o CMakeFiles/lab1.t.dir/particletest.cxx.s
 
-CMakeFiles/lab1.t.dir/particletype.cpp.o: CMakeFiles/lab1.t.dir/flags.make
-CMakeFiles/lab1.t.dir/particletype.cpp.o: ../particletype.cpp
-CMakeFiles/lab1.t.dir/particletype.cpp.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab1.t.dir/particletype.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/particletype.cpp.o -MF CMakeFiles/lab1.t.dir/particletype.cpp.o.d -o CMakeFiles/lab1.t.dir/particletype.cpp.o -c /Users/liamcavini/laboratorio/lab1/particletype.cpp
+CMakeFiles/lab1.t.dir/particletype.cxx.o: CMakeFiles/lab1.t.dir/flags.make
+CMakeFiles/lab1.t.dir/particletype.cxx.o: ../particletype.cxx
+CMakeFiles/lab1.t.dir/particletype.cxx.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab1.t.dir/particletype.cxx.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/particletype.cxx.o -MF CMakeFiles/lab1.t.dir/particletype.cxx.o.d -o CMakeFiles/lab1.t.dir/particletype.cxx.o -c /Users/liamcavini/laboratorio/lab1/particletype.cxx
 
-CMakeFiles/lab1.t.dir/particletype.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/particletype.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/particletype.cpp > CMakeFiles/lab1.t.dir/particletype.cpp.i
+CMakeFiles/lab1.t.dir/particletype.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/particletype.cxx.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/particletype.cxx > CMakeFiles/lab1.t.dir/particletype.cxx.i
 
-CMakeFiles/lab1.t.dir/particletype.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/particletype.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/particletype.cpp -o CMakeFiles/lab1.t.dir/particletype.cpp.s
+CMakeFiles/lab1.t.dir/particletype.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/particletype.cxx.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/particletype.cxx -o CMakeFiles/lab1.t.dir/particletype.cxx.s
 
-CMakeFiles/lab1.t.dir/resonancetype.cpp.o: CMakeFiles/lab1.t.dir/flags.make
-CMakeFiles/lab1.t.dir/resonancetype.cpp.o: ../resonancetype.cpp
-CMakeFiles/lab1.t.dir/resonancetype.cpp.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab1.t.dir/resonancetype.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/resonancetype.cpp.o -MF CMakeFiles/lab1.t.dir/resonancetype.cpp.o.d -o CMakeFiles/lab1.t.dir/resonancetype.cpp.o -c /Users/liamcavini/laboratorio/lab1/resonancetype.cpp
+CMakeFiles/lab1.t.dir/resonancetype.cxx.o: CMakeFiles/lab1.t.dir/flags.make
+CMakeFiles/lab1.t.dir/resonancetype.cxx.o: ../resonancetype.cxx
+CMakeFiles/lab1.t.dir/resonancetype.cxx.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab1.t.dir/resonancetype.cxx.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/resonancetype.cxx.o -MF CMakeFiles/lab1.t.dir/resonancetype.cxx.o.d -o CMakeFiles/lab1.t.dir/resonancetype.cxx.o -c /Users/liamcavini/laboratorio/lab1/resonancetype.cxx
 
-CMakeFiles/lab1.t.dir/resonancetype.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/resonancetype.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/resonancetype.cpp > CMakeFiles/lab1.t.dir/resonancetype.cpp.i
+CMakeFiles/lab1.t.dir/resonancetype.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/resonancetype.cxx.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/resonancetype.cxx > CMakeFiles/lab1.t.dir/resonancetype.cxx.i
 
-CMakeFiles/lab1.t.dir/resonancetype.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/resonancetype.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/resonancetype.cpp -o CMakeFiles/lab1.t.dir/resonancetype.cpp.s
+CMakeFiles/lab1.t.dir/resonancetype.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/resonancetype.cxx.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/resonancetype.cxx -o CMakeFiles/lab1.t.dir/resonancetype.cxx.s
 
-CMakeFiles/lab1.t.dir/particle.cpp.o: CMakeFiles/lab1.t.dir/flags.make
-CMakeFiles/lab1.t.dir/particle.cpp.o: ../particle.cpp
-CMakeFiles/lab1.t.dir/particle.cpp.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab1.t.dir/particle.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/particle.cpp.o -MF CMakeFiles/lab1.t.dir/particle.cpp.o.d -o CMakeFiles/lab1.t.dir/particle.cpp.o -c /Users/liamcavini/laboratorio/lab1/particle.cpp
+CMakeFiles/lab1.t.dir/particle.cxx.o: CMakeFiles/lab1.t.dir/flags.make
+CMakeFiles/lab1.t.dir/particle.cxx.o: ../particle.cxx
+CMakeFiles/lab1.t.dir/particle.cxx.o: CMakeFiles/lab1.t.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/lab1.t.dir/particle.cxx.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lab1.t.dir/particle.cxx.o -MF CMakeFiles/lab1.t.dir/particle.cxx.o.d -o CMakeFiles/lab1.t.dir/particle.cxx.o -c /Users/liamcavini/laboratorio/lab1/particle.cxx
 
-CMakeFiles/lab1.t.dir/particle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/particle.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/particle.cpp > CMakeFiles/lab1.t.dir/particle.cpp.i
+CMakeFiles/lab1.t.dir/particle.cxx.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab1.t.dir/particle.cxx.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/liamcavini/laboratorio/lab1/particle.cxx > CMakeFiles/lab1.t.dir/particle.cxx.i
 
-CMakeFiles/lab1.t.dir/particle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/particle.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/particle.cpp -o CMakeFiles/lab1.t.dir/particle.cpp.s
+CMakeFiles/lab1.t.dir/particle.cxx.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab1.t.dir/particle.cxx.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/liamcavini/laboratorio/lab1/particle.cxx -o CMakeFiles/lab1.t.dir/particle.cxx.s
 
 # Object files for target lab1.t
 lab1_t_OBJECTS = \
-"CMakeFiles/lab1.t.dir/particletest.cpp.o" \
-"CMakeFiles/lab1.t.dir/particletype.cpp.o" \
-"CMakeFiles/lab1.t.dir/resonancetype.cpp.o" \
-"CMakeFiles/lab1.t.dir/particle.cpp.o"
+"CMakeFiles/lab1.t.dir/particletest.cxx.o" \
+"CMakeFiles/lab1.t.dir/particletype.cxx.o" \
+"CMakeFiles/lab1.t.dir/resonancetype.cxx.o" \
+"CMakeFiles/lab1.t.dir/particle.cxx.o"
 
 # External object files for target lab1.t
 lab1_t_EXTERNAL_OBJECTS =
 
-lab1.t: CMakeFiles/lab1.t.dir/particletest.cpp.o
-lab1.t: CMakeFiles/lab1.t.dir/particletype.cpp.o
-lab1.t: CMakeFiles/lab1.t.dir/resonancetype.cpp.o
-lab1.t: CMakeFiles/lab1.t.dir/particle.cpp.o
+lab1.t: CMakeFiles/lab1.t.dir/particletest.cxx.o
+lab1.t: CMakeFiles/lab1.t.dir/particletype.cxx.o
+lab1.t: CMakeFiles/lab1.t.dir/resonancetype.cxx.o
+lab1.t: CMakeFiles/lab1.t.dir/particle.cxx.o
 lab1.t: CMakeFiles/lab1.t.dir/build.make
 lab1.t: CMakeFiles/lab1.t.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/liamcavini/laboratorio/lab1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable lab1.t"
