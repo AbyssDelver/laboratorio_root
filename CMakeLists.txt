@@ -20,7 +20,7 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined -fno-o
 find_package(ROOT 6.16 CONFIG REQUIRED)
 
 
-add_executable(lab1 main.cxx particletype.cxx resonancetype.cxx particle.cxx)
+add_executable(lab1 source/main.cxx source/particletype.cxx source/resonancetype.cxx source/particle.cxx)
 target_link_libraries(lab1 PUBLIC ROOT::Core ROOT::Gpad ROOT::Graf3d ROOT::Graf ROOT::Hist ROOT::Imt ROOT::MathCore ROOT::Matrix ROOT::MultiProc ROOT::Net ROOT::Physics ROOT::Postscript ROOT::RIO ROOT::ROOTDataFrame ROOT::ROOTVecOps ROOT::Rint ROOT::Thread ROOT::TreePlayer ROOT::Tree)
 
 # se il testing e' abilitato...
@@ -29,7 +29,7 @@ target_link_libraries(lab1 PUBLIC ROOT::Core ROOT::Gpad ROOT::Graf3d ROOT::Graf 
 if (BUILD_TESTING)
 
   # aggiungi l'eseguibile lab1.t
-  add_executable(lab1.t particletest.cxx particletype.cxx resonancetype.cxx particle.cxx)
+  add_executable(lab1.t source/test/particletest.cxx source/particletype.cxx source/resonancetype.cxx source/particle.cxx)
   # aggiungi l'eseguibile lab1.t alla lista dei test
   add_test(NAME lab1.t COMMAND lab1.t)
 

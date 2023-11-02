@@ -1,8 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "particletype.hpp"
-#include "resonancetype.hpp"
-#include "particle.hpp"
+#include "../particletype.hpp"
+#include "../resonancetype.hpp"
+#include "../particle.hpp"
 #include <cstring>
 
 TEST_CASE("testing getter funcitons") {
