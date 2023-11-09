@@ -1,4 +1,6 @@
 #include <iostream>
+//TODO: remove, and remove timers
+#include "timer.hpp"
 #include "particletype.hpp"
 
 

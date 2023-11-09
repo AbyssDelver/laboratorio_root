@@ -77,7 +77,8 @@ void Particle::setIndex(char* name) {
 double Particle::getPx() const { return fPx; };
 double Particle::getPy() const { return fPy; };
 double Particle::getPz() const { return fPz; };
-double Particle::getMass() const { return fParticleType[fIndex]->getMass(); }
+int Particle::getCharge() const { return fParticleType[fIndex]->getCharge();};
+double Particle::getMass() const { return fParticleType[fIndex]->getMass(); };
 double Particle::getEnergy() const {
   double mass = fParticleType[fIndex]->getMass();
   return std::sqrt(mass * mass + (fPx * fPx + fPy * fPy + fPz * fPz));

@@ -1,4 +1,6 @@
+#include <chrono>
 #include <iostream>
+#include <memory>
 
 #include "TApplication.h"
 #include "TCanvas.h"
@@ -15,6 +17,8 @@
 #include "particle.hpp"
 #include "particletype.hpp"
 #include "resonancetype.hpp"
+#include "timer.hpp"
+constexpr int eventNumber = 10000;
 constexpr int particleNumber = 100;
 constexpr int particleCapacity = 200;
 
@@ -65,13 +69,14 @@ void decayGen(Particle& p1, Particle& p2) {
 }
 
 int main() {
+  Timer timer{"total timer"};
   // todo: uncomment vvv
   gRandom->SetSeed();
 
   Particle EventParticles[particleCapacity];
 
   // number of particles over the generated 100 particles.
-  int overfill{0};
+  int overflow{0};
 
   Particle::addParticleType(particleNames::pionePlus, 0.13957, 1);
   Particle::addParticleType(particleNames::pioneMinus, 0.13957, -1);
@@ -84,58 +89,140 @@ int main() {
   // initializing histograms
   TH1F* hTypes = new TH1F("types", "particle types", 7, 0., 7.);
   // TODO: check that bin numbers is right
-  TH1F* hTheta = new TH1F("theta", "theta", 10, 0., TMath::Pi());
-  TH1F* hPhi = new TH1F("phi", "phi", 10, 0., 2 * TMath::Pi());
+  TH1F* hTheta = new TH1F("theta", "theta", 500, 0., TMath::Pi());
+  TH1F* hPhi = new TH1F("phi", "phi", 500, 0., 2 * TMath::Pi());
   // TODO: check that bin range is right
-  TH1F* hP = new TH1F("p", "momentum", 10, 0., 10.);
-  TH1F* hPTrans = new TH1F("pTrans", "transverse momentum", 10., 0., 10.);
-  TH1F* hEnergy = new TH1F("energy", "Energy", 10, 0., 10.);
-  TH1F* hInvMass = new TH1F("invMass", "invaraint mass", 10, 0., 10.);
+  TH1F* hP = new TH1F("p", "momentum", 500, 0., 15.);
+  TH1F* hPTrans = new TH1F("pTrans", "transverse momentum", 500, 0., 15.);
+  TH1F* hEnergy = new TH1F("energy", "Energy", 500, 0., 15.);
+  TH1F* hInvMass = new TH1F("invMass", "invaraint mass", 500, 0., 15.);
+  // clang-format off
+  TH1F* hInvMassDiscordant = new TH1F("invMassDiscordant", "invaraint mass for discordant charges", 500, 0., 15.);
+  TH1F* hInvMassConcordant = new TH1F("invMassDiscordant", "invaraint mass for concordant charges", 500, 0., 15.);
+  TH1F* hInvMassDiscordantKP = new TH1F("invMassDiscordant", "invaraint mass for discordant charges pion and kaon", 500, 0., 15.);
+  TH1F* hInvMassConcordantKP = new TH1F("invMassDiscordant", "invaraint mass for concordant charges pion and kaon", 500, 0., 15.);
+  TH1F* hInvMassDecay = new TH1F("invMassDiscordant", "invaraint mass for particles generated through decay", 500, 0.8, 0.9);
+  // clang-format on
+
   hInvMass->Sumw2();
+  hInvMassDiscordant->Sumw2();
+  hInvMassConcordant->Sumw2();
+  hInvMassDiscordantKP->Sumw2();
+  hInvMassConcordantKP->Sumw2();
+  hInvMassDecay->Sumw2();
 
-  // particle generation loop
-  for (int i{}; i < particleNumber; ++i) {
-    // generating momentum
-    double phi = gRandom->Uniform(0, 2 * TMath::Pi());
-    double theta = gRandom->Uniform(0, TMath::Pi());
-    double p = gRandom->Exp(1);
-    double pArray[3];
-    polarToCartesian(pArray, theta, phi, p);
+  for (int l{}; l < eventNumber; ++l) {
+    // particle generation loop
+    for (int i{}; i < particleNumber; ++i) {
+      // generating momentum
+      double phi, theta, p;
+      double pArray[3];
 
-    // randomly generates particle
-    char* particleName = particleGen();
+      {
+      Timer timer{"random number generation"};
+       phi = gRandom->Uniform(0, 2 * TMath::Pi());
+       theta = gRandom->Uniform(0, TMath::Pi());
+       p = gRandom->Exp(1);
+      }
 
-    // populate array of particles
-    EventParticles[i].setP(pArray[0], pArray[1], pArray[2]);
-    EventParticles[i].setIndex(particleName);
+      {
+      Timer timer{"polar to cartesian"};
+      polarToCartesian(pArray, theta, phi, p);
+      }
 
-    // if particle is K+ it decays in two other particle
-    if (particleName == particleNames::kPlus) {
-      decayGen(EventParticles[particleNumber + overfill],
-               EventParticles[particleNumber + overfill + 1]);
-      EventParticles[i].Decay2body(
-          EventParticles[particleNumber + overfill],
-          EventParticles[particleNumber + overfill + 1]);
-      overfill += 2;
+      // randomly generates particle
+      char* particleName = particleGen();
 
-      // filling histograms with decayed particles
-      hTypes->Fill(EventParticles[particleNumber + overfill].getIndex());
-      hTypes->Fill(EventParticles[particleNumber + overfill + 1].getIndex());
-      // TODO: which histograms must also consider decayed particles?
+      // populate array of particles
+      EventParticles[i].setP(pArray[0], pArray[1], pArray[2]);
+      EventParticles[i].setIndex(particleName);
+
+      // if particle is K+ it decays in two other particle
+      {
+      Timer timer{"decay"};
+      if (particleName == particleNames::kPlus) {
+        decayGen(EventParticles[particleNumber + overflow],
+                 EventParticles[particleNumber + overflow + 1]);
+        EventParticles[i].Decay2body(
+            EventParticles[particleNumber + overflow],
+            EventParticles[particleNumber + overflow + 1]);
+
+        // filling histograms with decayed particles
+        hTypes->Fill(EventParticles[particleNumber + overflow].getIndex());
+        hTypes->Fill(EventParticles[particleNumber + overflow + 1].getIndex());
+
+        //TODO: is code right?
+        for(int m{}; m < overflow; m++){
+          hInvMassDecay->Fill(EventParticles[particleNumber + overflow].invMass(
+            EventParticles[particleNumber+m]));
+           hInvMassDecay->Fill(EventParticles[particleNumber + overflow + 1].invMass(
+            EventParticles[particleNumber+m]));
+        }
+
+        hInvMassDecay->Fill(EventParticles[particleNumber + overflow].invMass(
+            EventParticles[particleNumber + overflow + 1]));
+        // TODO: which histograms must also consider decayed particles?
+        overflow += 2;
+      }
+      }
+
+      // filling histograms
+      {
+      Timer timer{"filling histo"};
+      hTypes->Fill(EventParticles[i].getIndex());
+      hTheta->Fill(theta);
+      hPhi->Fill(phi);
+      hP->Fill(p);
+      hPTrans->Fill(TMath::Sqrt(TMath::Power(EventParticles[i].getPx(), 2) +
+                                TMath::Power(EventParticles[i].getPy(), 2)));
+      hEnergy->Fill(EventParticles[i].getEnergy());
+      }
+      {
+
+      Timer timer{"inv mass"};
+      // TODO: not sure if we have to iterate through all particles
+      for (int j{}; j < i; ++j) {
+        // to make code more readable
+        auto& particle = EventParticles[i];
+        auto& other_particle = EventParticles[j];
+
+        hInvMass->Fill(particle.invMass(EventParticles[j]));
+        // TODO: what to do with K* particles that have 0 as charge? concordant
+        // or not?
+        //  if particle charges are discordant
+        if (particle.getCharge() * other_particle.getCharge() < 0) {
+          hInvMassDiscordant->Fill(particle.invMass(other_particle));
+        }
+        // if particle charges are concordant
+        if (EventParticles[i].getCharge() * EventParticles[j].getCharge() > 0) {
+          hInvMassConcordant->Fill(
+              EventParticles[i].invMass(EventParticles[j]));
+        }
+        // if particles are pion+ and kaon-
+        if ((particle.getIndex() == 0 && other_particle.getIndex() == 3) ||
+            (particle.getIndex() == 3 && other_particle.getIndex() == 0)) {
+          hInvMassDiscordantKP->Fill(particle.invMass(other_particle));
+        };
+        // if particles are pion- and kaon+
+        if ((particle.getIndex() == 1 && other_particle.getIndex() == 2) ||
+            (particle.getIndex() == 2 && other_particle.getIndex() == 1)) {
+          hInvMassDiscordantKP->Fill(particle.invMass(other_particle));
+        };
+        // if particles are pion+ and kaon+
+        if ((particle.getIndex() == 0 && other_particle.getIndex() == 2) ||
+            (particle.getIndex() == 2 && other_particle.getIndex() == 0)) {
+          hInvMassConcordantKP->Fill(particle.invMass(other_particle));
+        };
+        // if particles are pion- and kaon-
+        if ((particle.getIndex() == 1 && other_particle.getIndex() == 3) ||
+            (particle.getIndex() == 3 && other_particle.getIndex() == 1)) {
+          hInvMassConcordantKP->Fill(particle.invMass(other_particle));
+        };
+      }
+      }
+      // end of event
+      overflow = 0;
     }
-
-    // filling histograms
-    hTypes->Fill(EventParticles[i].getIndex());
-    hTheta->Fill(theta);
-    hPhi->Fill(phi);
-    hP->Fill(p);
-    hPTrans->Fill(TMath::Sqrt(TMath::Power(EventParticles[i].getPx(), 2) +
-                              TMath::Power(EventParticles[i].getPy(), 2)));
-    hEnergy->Fill(EventParticles[i].getEnergy());
-
-    // TODO: not sure if we have to iterate through all particles
-    for (int j{}; j < i; ++j)
-      hInvMass->Fill(EventParticles[i].invMass(EventParticles[j]));
   }
 
   //------------------- draw histograms -------------------
@@ -236,7 +323,8 @@ int main() {
   cEnergy->Print("../histograms/canvasEnergy.pdf");
 
   //--- Inv Mass ---
-  TCanvas* cInvMass = new TCanvas("cInvMass", "invariant mass canvas", 800, 800);
+  TCanvas* cInvMass =
+      new TCanvas("cInvMass", "invariant mass canvas", 800, 800);
 
   hInvMass->SetLineWidth(1);
   hInvMass->SetLineColor(kBlack);
@@ -249,4 +337,81 @@ int main() {
   hInvMass->Draw("H");
 
   cInvMass->Print("../histograms/canvasInvMass.pdf");
+
+  //--- Inv Mass for concordant discordant ---
+  TCanvas* cInvMassCharges = new TCanvas(
+      "cInvMassCharges",
+      "invariant mass canvas for concordant/discordant charges", 800, 800);
+  cInvMassCharges->Divide(2, 2);
+  cInvMassCharges->cd(1);
+
+  hInvMassDiscordant->SetLineWidth(1);
+  hInvMassDiscordant->SetLineColor(kBlack);
+  hInvMassDiscordant->SetTitle(
+      "invariant mass distribution for discordant charges");
+  hInvMassDiscordant->SetMarkerStyle(kFullCircle);
+  hInvMassDiscordant->SetMarkerSize(0.8);
+  hInvMassDiscordant->SetMarkerColor(kBlack);
+  hInvMassDiscordant->SetFillColor(kTeal);
+  hInvMassDiscordant->SetMinimum(0);
+  hInvMassDiscordant->Draw("H");
+
+  cInvMassCharges->cd(2);
+
+  hInvMassConcordant->SetLineWidth(1);
+  hInvMassConcordant->SetLineColor(kBlack);
+  hInvMassConcordant->SetTitle(
+      "invariant mass distribution for concordant charges");
+  hInvMassConcordant->SetMarkerStyle(kFullCircle);
+  hInvMassConcordant->SetMarkerSize(0.8);
+  hInvMassConcordant->SetMarkerColor(kBlack);
+  hInvMassConcordant->SetFillColor(kTeal);
+  hInvMassConcordant->SetMinimum(0);
+  hInvMassConcordant->Draw("H");
+
+  cInvMassCharges->cd(3);
+  hInvMassDiscordantKP->SetLineWidth(1);
+  hInvMassDiscordantKP->SetLineColor(kBlack);
+  hInvMassDiscordantKP->SetTitle(
+      "invariant mass distribution for discordant charges (only kaons or "
+      "pions)");
+  hInvMassDiscordantKP->SetMarkerStyle(kFullCircle);
+  hInvMassDiscordantKP->SetMarkerSize(0.8);
+  hInvMassDiscordantKP->SetMarkerColor(kBlack);
+  hInvMassDiscordantKP->SetFillColor(kTeal);
+  hInvMassDiscordantKP->SetMinimum(0);
+  hInvMassDiscordantKP->Draw("H");
+
+  cInvMassCharges->cd(4);
+  hInvMassDiscordantKP->SetLineWidth(1);
+  hInvMassDiscordantKP->SetLineColor(kBlack);
+  hInvMassDiscordantKP->SetTitle(
+      "invariant mass distribution for discordant charges(only kaons or "
+      "pions)");
+  hInvMassDiscordantKP->SetMarkerStyle(kFullCircle);
+  hInvMassDiscordantKP->SetMarkerSize(0.8);
+  hInvMassDiscordantKP->SetMarkerColor(kBlack);
+  hInvMassDiscordantKP->SetFillColor(kTeal);
+  hInvMassDiscordantKP->SetMinimum(0);
+  hInvMassDiscordantKP->Draw("H");
+
+  cInvMassCharges->Print("../histograms/canvasChargesInvMass.pdf");
+
+  //--- Inv Mass for decayed ---
+  TCanvas* cInvMassDecayed = new TCanvas(
+      "cInvMassDecayed",
+      "invariant mass canvas for particles generated by decay", 800, 800);
+
+  hInvMassDecay->SetLineWidth(1);
+  hInvMassDecay->SetLineColor(kBlack);
+  hInvMassDecay->SetTitle(
+      "invariant mass distribution for particles generated by decay");
+  hInvMassDecay->SetMarkerStyle(kFullCircle);
+  hInvMassDecay->SetMarkerSize(0.8);
+  hInvMassDecay->SetMarkerColor(kBlack);
+  hInvMassDecay->SetFillColor(kTeal);
+  hInvMassDecay->SetMinimum(0);
+  hInvMassDecay->Draw("H");
+
+  cInvMassDecayed->Print("../histograms/canvasDecayInvMass.pdf");
 }
