@@ -18,7 +18,9 @@
 #include "particletype.hpp"
 #include "resonancetype.hpp"
 #include "timer.hpp"
-constexpr int eventNumber = 10000;
+#include "memory_test.hpp"
+
+constexpr int eventNumber = 1;
 constexpr int particleNumber = 100;
 constexpr int particleCapacity = 200;
 
@@ -114,6 +116,7 @@ int main() {
   for (int l{}; l < eventNumber; ++l) {
     // particle generation loop
     for (int i{}; i < particleNumber; ++i) {
+      tracker.reset();
       // generating momentum
       double phi, theta, p;
       double pArray[3];
@@ -146,10 +149,6 @@ int main() {
         EventParticles[i].Decay2body(
             EventParticles[particleNumber + overflow],
             EventParticles[particleNumber + overflow + 1]);
-
-        // filling histograms with decayed particles
-        hTypes->Fill(EventParticles[particleNumber + overflow].getIndex());
-        hTypes->Fill(EventParticles[particleNumber + overflow + 1].getIndex());
 
         //TODO: is code right?
         for(int m{}; m < overflow; m++){
@@ -222,6 +221,7 @@ int main() {
       }
       // end of event
       overflow = 0;
+      tracker.print();
     }
   }
 

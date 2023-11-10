@@ -4,8 +4,8 @@
 #include "particletype.hpp"
 
 
-ParticleType::ParticleType(char* name, double mass, int charge): fName{name}, fMass{mass}, fCharge{charge} {};
-char* ParticleType::getName() const{
+ParticleType::ParticleType(const char* name, double mass, int charge): fName{name}, fMass{mass}, fCharge{charge} {};
+const char* ParticleType::getName() const{
     return fName;
 }
 
