@@ -2,6 +2,8 @@
 #include <iostream>
 #include <memory>
 
+#include "memory_test.hpp"
+
 #define ROOTLESS
 
 #ifndef ROOTLESS
@@ -18,29 +20,29 @@
 #include "TRandom.h"
 #include "TStyle.h"
 #else
-struct fakeRndm{
-float Rndm(){return 4;}
-float Exp(float x){return 4;}
-float Uniform(float x, float y){return 4;}
-void SetSeed(){};
+struct fakeRndm {
+  float Rndm() { return 4; }
+  float Exp(float x) { return 4; }
+  float Uniform(float x, float y) { return 4; }
+  void SetSeed(){};
 };
-fakeRndm *gRandom;
+fakeRndm* gRandom;
 
-struct TMath{
-static float  Sin(float x){return 4;}
-static float  Cos(float x){return 4;}
-static float  Pi(){return 4;}
-static float  Power(float x, float y){return 4;}
-static float  Sqrt(float x){return 4;}
-};
-
-struct fakeH{
-  void Fill(float x){}
-
-
+struct TMath {
+  static float Sin(float x) { return 4; }
+  static float Cos(float x) { return 4; }
+  static float Pi() { return 4; }
+  static float Power(float x, float y) { return 4; }
+  static float Sqrt(float x) { return 4; }
 };
 
-fakeH *hTypes,* hTheta,* hPhi,* hP,* hPTrans,* hEnergy,* hInvMass,* hInvMassDiscordant,* hInvMassConcordant,* hInvMassDiscordantKP,* hInvMassConcordantKP,* hInvMassDecay;
+struct fakeH {
+  void Fill(float x) {}
+};
+
+fakeH *hTypes, *hTheta, *hPhi, *hP, *hPTrans, *hEnergy, *hInvMass,
+    *hInvMassDiscordant, *hInvMassConcordant, *hInvMassDiscordantKP,
+    *hInvMassConcordantKP, *hInvMassDecay;
 
 #endif
 
@@ -146,20 +148,22 @@ int main() {
   for (int l{}; l < eventNumber; ++l) {
     // particle generation loop
     for (int i{}; i < particleNumber; ++i) {
+      tracker.reset();
       // generating momentum
       double phi, theta, p;
       double pArray[3];
 
       {
-      Timer timer{"random number generation"};
-       phi = gRandom->Uniform(0, 2 * TMath::Pi());
-       theta = gRandom->Uniform(0, TMath::Pi());
-       p = gRandom->Exp(1);
+        Timer timer{"random number generation"};
+        //phi = gRandom->Uniform(0, 2 * TMath::Pi());
+        //theta = gRandom->Uniform(0, TMath::Pi());
+        //p = gRandom->Exp(1);
       }
 
+      continue;
       {
-      Timer timer{"polar to cartesian"};
-      polarToCartesian(pArray, theta, phi, p);
+        Timer timer{"polar to cartesian"};
+        polarToCartesian(pArray, theta, phi, p);
       }
 
       // randomly generates particle
@@ -168,78 +172,77 @@ int main() {
       // populate array of particles
       EventParticles[i].setP(pArray[0], pArray[1], pArray[2]);
       EventParticles[i].setIndex(particleName);
-
       // if particle is K+ it decays in two other particle
       {
-      Timer timer{"decay"};
-      if (particleName == particleNames::kPlus) {
-        decayGen(EventParticles[particleNumber + overflow],
-                 EventParticles[particleNumber + overflow + 1]);
-        EventParticles[i].Decay2body(
-            EventParticles[particleNumber + overflow],
-            EventParticles[particleNumber + overflow + 1]);
-        
-        hInvMassDecay->Fill(EventParticles[particleNumber + overflow].invMass(
-            EventParticles[particleNumber + overflow + 1]));
-        // TODO: which histograms must also consider decayed particles?
-        overflow += 2;
-      }
+        Timer timer{"decay"};
+        if (particleName == particleNames::kPlus) {
+          decayGen(EventParticles[particleNumber + overflow],
+                   EventParticles[particleNumber + overflow + 1]);
+          EventParticles[i].Decay2body(
+              EventParticles[particleNumber + overflow],
+              EventParticles[particleNumber + overflow + 1]);
+
+          hInvMassDecay->Fill(EventParticles[particleNumber + overflow].invMass(
+              EventParticles[particleNumber + overflow + 1]));
+          // TODO: which histograms must also consider decayed particles?
+          overflow += 2;
+          tracker.print();
+        }
       }
 
       // filling histograms
       {
-      Timer timer{"filling histo"};
-      hTypes->Fill(EventParticles[i].getIndex());
-      hTheta->Fill(theta);
-      hPhi->Fill(phi);
-      hP->Fill(p);
-      hPTrans->Fill(TMath::Sqrt(TMath::Power(EventParticles[i].getPx(), 2) +
-                                TMath::Power(EventParticles[i].getPy(), 2)));
-      hEnergy->Fill(EventParticles[i].getEnergy());
+        Timer timer{"filling histo"};
+        hTypes->Fill(EventParticles[i].getIndex());
+        hTheta->Fill(theta);
+        hPhi->Fill(phi);
+        hP->Fill(p);
+        hPTrans->Fill(TMath::Sqrt(TMath::Power(EventParticles[i].getPx(), 2) +
+                                  TMath::Power(EventParticles[i].getPy(), 2)));
+        hEnergy->Fill(EventParticles[i].getEnergy());
       }
       {
+        Timer timer{"inv mass"};
+        // TODO: not sure if we have to iterate through all particles
+        for (int j{}; j < i; ++j) {
+          // to make code more readable
+          auto& particle = EventParticles[i];
+          auto& other_particle = EventParticles[j];
+          auto inv_mass = particle.invMass(other_particle);
 
-      Timer timer{"inv mass"};
-      // TODO: not sure if we have to iterate through all particles
-      for (int j{}; j < i; ++j) {
-        // to make code more readable
-        auto& particle = EventParticles[i];
-        auto& other_particle = EventParticles[j];
-        auto inv_mass = particle.invMass(other_particle);
-
-        hInvMass->Fill(inv_mass);
-        // TODO: what to do with K* particles that have 0 as charge? concordant
-        // or not?
-        //  if particle charges are discordant
-        if (particle.getCharge() * other_particle.getCharge() < 0) {
-          hInvMassDiscordant->Fill(inv_mass);
+          hInvMass->Fill(inv_mass);
+          // TODO: what to do with K* particles that have 0 as charge?
+          // concordant or not?
+          //  if particle charges are discordant
+          if (particle.getCharge() * other_particle.getCharge() < 0) {
+            hInvMassDiscordant->Fill(inv_mass);
+          }
+          // if particle charges are concordant
+          if (EventParticles[i].getCharge() * EventParticles[j].getCharge() >
+              0) {
+            hInvMassConcordant->Fill(inv_mass);
+          }
+          // if particles are pion+ and kaon-
+          if ((particle.getIndex() == 0 && other_particle.getIndex() == 3) ||
+              (particle.getIndex() == 3 && other_particle.getIndex() == 0)) {
+            hInvMassDiscordantKP->Fill(inv_mass);
+          };
+          // if particles are pion- and kaon+
+          if ((particle.getIndex() == 1 && other_particle.getIndex() == 2) ||
+              (particle.getIndex() == 2 && other_particle.getIndex() == 1)) {
+            hInvMassDiscordantKP->Fill(inv_mass);
+          };
+          // if particles are pion+ and kaon+
+          if ((particle.getIndex() == 0 && other_particle.getIndex() == 2) ||
+              (particle.getIndex() == 2 && other_particle.getIndex() == 0)) {
+            hInvMassConcordantKP->Fill(inv_mass);
+          };
+          // if particles are pion- and kaon-
+          if ((particle.getIndex() == 1 && other_particle.getIndex() == 3) ||
+              (particle.getIndex() == 3 && other_particle.getIndex() == 1)) {
+            hInvMassConcordantKP->Fill(inv_mass);
+          };
         }
-        // if particle charges are concordant
-        if (EventParticles[i].getCharge() * EventParticles[j].getCharge() > 0) {
-          hInvMassConcordant->Fill(
-              inv_mass);
-        }
-        // if particles are pion+ and kaon-
-        if ((particle.getIndex() == 0 && other_particle.getIndex() == 3) ||
-            (particle.getIndex() == 3 && other_particle.getIndex() == 0)) {
-          hInvMassDiscordantKP->Fill(inv_mass);
-        };
-        // if particles are pion- and kaon+
-        if ((particle.getIndex() == 1 && other_particle.getIndex() == 2) ||
-            (particle.getIndex() == 2 && other_particle.getIndex() == 1)) {
-          hInvMassDiscordantKP->Fill(inv_mass);
-        };
-        // if particles are pion+ and kaon+
-        if ((particle.getIndex() == 0 && other_particle.getIndex() == 2) ||
-            (particle.getIndex() == 2 && other_particle.getIndex() == 0)) {
-          hInvMassConcordantKP->Fill(inv_mass);
-        };
-        // if particles are pion- and kaon-
-        if ((particle.getIndex() == 1 && other_particle.getIndex() == 3) ||
-            (particle.getIndex() == 3 && other_particle.getIndex() == 1)) {
-          hInvMassConcordantKP->Fill(inv_mass);
-        };
-      }
       }
       // end of event
       overflow = 0;
@@ -436,6 +439,6 @@ int main() {
   hInvMassDecay->Draw("H");
 
   cInvMassDecayed->Print("../histograms/canvasDecayInvMass.pdf");
-  #endif
+#endif
   return 0;
 }
