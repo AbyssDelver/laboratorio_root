@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <cstring>
+#include <cstdlib>
 #include <iostream>
 
 // todo: check if good practice, or makes sense
@@ -83,7 +84,7 @@ double Particle::getEnergy() const {
   double mass = fParticleType[fIndex]->getMass();
   return std::sqrt(mass * mass + (fPx * fPx + fPy * fPy + fPz * fPz));
 }
-double Particle::invMass(Particle& p) const {
+double Particle::invMass(const Particle& p) const {
   double momentumSum = (fPx + p.fPx) * (fPx + p.fPx) +
                        (fPy + p.fPy) * (fPy + p.fPy) +
                        (fPz + p.fPz) * (fPz + p.fPz);

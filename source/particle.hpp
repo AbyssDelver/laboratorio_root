@@ -20,7 +20,7 @@ class Particle {
   int getCharge() const;
   double getMass() const;
   double getEnergy() const;
-  double invMass(Particle& p) const;
+  double invMass(const Particle& p) const;
   void setP(double px, double py, double pz);
   int Decay2body(Particle& dau1, Particle& dau2) const;
   void Boost(double bx, double by, double bz);

@@ -3,18 +3,18 @@
 class ParticleType{
 
     public:
-    ParticleType(char*, double, int);
+    ParticleType(const char*, double, int);
 
     virtual void print() const;
     virtual ~ParticleType();
 
-    char* getName() const;
+    const char* getName() const;
     double getMass() const;
     int getCharge() const;
     int getWidth() const;
 
     private:
-    char* fName;
+   const char* fName;
     double fMass;
     int fCharge;
 };
