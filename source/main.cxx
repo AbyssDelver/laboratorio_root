@@ -20,7 +20,7 @@
 #include "timer.hpp"
 #include "memory_test.hpp"
 
-constexpr int eventNumber = 1;
+constexpr int eventNumber = 10000;
 constexpr int particleNumber = 100;
 constexpr int particleCapacity = 200;
 
@@ -70,7 +70,7 @@ void decayGen(Particle& p1, Particle& p2) {
   }
 }
 
-int main() {
+int Main() {
   Timer timer{"total timer"};
   // todo: uncomment vvv
   gRandom->SetSeed();
@@ -414,4 +414,11 @@ int main() {
   hInvMassDecay->Draw("H");
 
   cInvMassDecayed->Print("../histograms/canvasDecayInvMass.pdf");
+
+  //writing to file:
+  TFile *file = new TFile("../histograms/histos.root", "RECREATE"); 
+  file->Write();
+  file->Close();
+
+  return 0;
 }
