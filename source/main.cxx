@@ -20,7 +20,7 @@
 #include "timer.hpp"
 #include "memory_test.hpp"
 
-constexpr int eventNumber = 1000000;
+constexpr int eventNumber = 100000;
 constexpr int particleNumber = 100;
 constexpr int particleCapacity = 200;
 
@@ -247,7 +247,7 @@ int main() {
   hTypes->GetXaxis()->SetBinLabel(7, particleNames::kPlus);
   hTypes->Draw("H");
 
-  cTypes->Print("../histograms/canvasTypes.pdf");
+  cTypes->Print("./histograms/canvasTypes.pdf");
 
   //--- Angles ---
   TCanvas* cAngles = new TCanvas("cAngles", "angle canvas", 800, 800);
@@ -276,7 +276,7 @@ int main() {
   hPhi->SetMinimum(0);
   hPhi->Draw("H");
 
-  cAngles->Print("../histograms/canvasAngles.pdf");
+  cAngles->Print("./histograms/canvasAngles.pdf");
 
   //--- Momentum ---
   TCanvas* cP = new TCanvas("cP", "momentum canvas", 800, 800);
@@ -305,7 +305,7 @@ int main() {
   hPTrans->SetMinimum(0);
   hPTrans->Draw("H");
 
-  cP->Print("../histograms/canvasMomentum.pdf");
+  cP->Print("./histograms/canvasMomentum.pdf");
 
   //--- Energy ---
   TCanvas* cEnergy = new TCanvas("cEnergy", "energy canvas", 800, 800);
@@ -320,7 +320,7 @@ int main() {
   hEnergy->SetMinimum(0);
   hEnergy->Draw("H");
 
-  cEnergy->Print("../histograms/canvasEnergy.pdf");
+  cEnergy->Print("./histograms/canvasEnergy.pdf");
 
   //--- Inv Mass ---
   TCanvas* cInvMass =
@@ -336,7 +336,7 @@ int main() {
   hInvMass->SetMinimum(0);
   hInvMass->Draw("H");
 
-  cInvMass->Print("../histograms/canvasInvMass.pdf");
+  cInvMass->Print("./histograms/canvasInvMass.pdf");
 
   //--- Inv Mass for concordant discordant ---
   TCanvas* cInvMassCharges = new TCanvas(
@@ -395,7 +395,7 @@ int main() {
   hInvMassDiscordantKP->SetMinimum(0);
   hInvMassDiscordantKP->Draw("H");
 
-  cInvMassCharges->Print("../histograms/canvasChargesInvMass.pdf");
+  cInvMassCharges->Print("./histograms/canvasChargesInvMass.pdf");
 
   //--- Inv Mass for decayed ---
   TCanvas* cInvMassDecayed = new TCanvas(
@@ -413,10 +413,10 @@ int main() {
   hInvMassDecay->SetMinimum(0);
   hInvMassDecay->Draw("H");
 
-  cInvMassDecayed->Print("../histograms/canvasDecayInvMass.pdf");
+  cInvMassDecayed->Print("./histograms/canvasDecayInvMass.pdf");
 
   //writing to file:
-  TFile *file = new TFile("../histograms/histos.root", "RECREATE"); 
+  TFile *file = new TFile("./histograms/histos.root", "RECREATE"); 
   file->Write();
   file->Close();
 
