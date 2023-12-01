@@ -1,5 +1,0 @@
-# Existence of directory necessary for program to work
-# Ignore everything in this directory
-*
-# Except this file
-!.gitignore
