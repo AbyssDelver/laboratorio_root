@@ -20,7 +20,7 @@
 #include "timer.hpp"
 #include "memory_test.hpp"
 
-constexpr int eventNumber = 10000;
+constexpr int eventNumber = 1000000;
 constexpr int particleNumber = 100;
 constexpr int particleCapacity = 200;
 
