@@ -70,7 +70,7 @@ void decayGen(Particle& p1, Particle& p2) {
   }
 }
 
-int Main() {
+int main() {
   Timer timer{"total timer"};
   // todo: uncomment vvv
   gRandom->SetSeed();
