@@ -12,7 +12,7 @@ class ParticleType{
     const char* getName() const;
     double getMass() const;
     int getCharge() const;
-    int getWidth() const;
+    virtual double getWidth() const;
 
     private:
     const char* fName;

@@ -38,9 +38,9 @@ void Particle::printParticle() const {
 
 Particle::Particle(char* name, double Px, double Py, double Pz)
     : fPx(Px), fPy(Py), fPz(Pz) {
-      if (name == nullptr){
-        return;
-      }
+  if (name == nullptr) {
+    return;
+  }
   fIndex = FindParticle(name);
   if (fIndex == -1) {
     throw "invalid particle type";
@@ -77,12 +77,13 @@ void Particle::setIndex(char* name) {
 double Particle::getPx() const { return fPx; };
 double Particle::getPy() const { return fPy; };
 double Particle::getPz() const { return fPz; };
-int Particle::getCharge() const { return fParticleType[fIndex]->getCharge();};
+int Particle::getCharge() const { return fParticleType[fIndex]->getCharge(); };
 double Particle::getMass() const { return fParticleType[fIndex]->getMass(); };
 double Particle::getEnergy() const {
   double mass = fParticleType[fIndex]->getMass();
   return std::sqrt(mass * mass + (fPx * fPx + fPy * fPy + fPz * fPz));
 }
+
 double Particle::invMass(Particle& p) const {
   double momentumSum = (fPx + p.fPx) * (fPx + p.fPx) +
                        (fPy + p.fPy) * (fPy + p.fPy) +
@@ -107,7 +108,6 @@ int Particle::Decay2body(Particle& dau1, Particle& dau2) const {
   double massDau1 = dau1.getMass();
   double massDau2 = dau2.getMass();
 
-  // todo: check if fIndex
   if (fIndex > -1) {  // add width effect
 
     // gaussian random numbers
@@ -160,6 +160,7 @@ int Particle::Decay2body(Particle& dau1, Particle& dau2) const {
 
   return 0;
 }
+
 void Particle::Boost(double bx, double by, double bz) {
   double energy = getEnergy();
 

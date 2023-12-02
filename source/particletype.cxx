@@ -24,6 +24,6 @@ void ParticleType::print() const{
     std::cout << "charge: " << fCharge << '\n'; 
 }
 
-int ParticleType::getWidth() const{
-  return 0;  
+double ParticleType::getWidth() const{
+  return 0.;  
 }
