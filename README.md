@@ -31,6 +31,6 @@ from the laboratorio_root/ path.
 If everything goes well you should see the output of the analysis in your terminal, ginving the parameters and chi squared of the various fits.
 The generated histograms should be saved in the histograms folder.
 
-Note: usually one would open the cling interpreter by writing 'root' in the terminal, and then have to add ulterior commands to load the macro and analyse the data. In our case this is handles by the 'rootlogon.C' file, that also exits the interpreter.
+Note: usually one would open the cling interpreter by writing 'root' in the terminal, and then have to add ulterior commands to load the macro and analyse the data. In our case this is handled by the 'rootlogon.C' file, that also exits the interpreter.
 
 
