@@ -1,7 +1,7 @@
 # Particle collision simulator
 Dependecies
 -----
-the framework ROOT version 6.16 is required for this project. If you have good reason to think another version will also work, try changing the "find_package" in the CMakeLists.txt to your preffered version.
+the framework ROOT version 6.16 is required for this project. If you have good reason to think another version will also work, try changing the "find_package" in the CMakeLists.txt to your preferred version.
 
 Running the simulation
 -----
