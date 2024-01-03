@@ -3,9 +3,7 @@
 #include "particletype.hpp"
 #include "resonancetype.hpp"
 
-// todo: change chars to const chars.
 class Particle {
-  // todo: make private
  public:
   Particle(char* = nullptr, double = 0., double = 0., double = 0.);
   int getIndex() const;
@@ -26,7 +24,6 @@ class Particle {
   void Boost(double bx, double by, double bz);
 
  private:
-  // todo: check if static is right.
   static int FindParticle(char* name);
   static const int fMaxNumParticleType = 10;
   static int fNParticleType;
