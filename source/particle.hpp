@@ -3,7 +3,7 @@
 #include "particletype.hpp"
 #include "resonancetype.hpp"
 
-//todo: change chars to const chars.
+// todo: change chars to const chars.
 class Particle {
   // todo: make private
  public:

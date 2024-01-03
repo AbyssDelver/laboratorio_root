@@ -8,7 +8,6 @@ class ParticleType{
     virtual void print() const;
     virtual ~ParticleType();
 
-    //TODO: should it return a const??
     const char* getName() const;
     double getMass() const;
     int getCharge() const;

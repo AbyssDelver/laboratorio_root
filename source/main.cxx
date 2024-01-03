@@ -17,16 +17,15 @@
 #include "particle.hpp"
 #include "particletype.hpp"
 #include "resonancetype.hpp"
-#include "timer.hpp"
 
 namespace particleNames {
-char pionPlus[] = "pione+";
-char pionMinus[] = "pione-";
-char kaonPlus[] = "kaone+";
-char kaonMinus[] = "kaone-";
-char protonPlus[] = "protone+";
-char protonMinus[] = "protone-";
-char kStar[] = "K+";
+char pionPlus[] = "pion+";
+char pionMinus[] = "pion-";
+char kaonPlus[] = "kaon+";
+char kaonMinus[] = "kaon-";
+char protonPlus[] = "proton+";
+char protonMinus[] = "proton-";
+char kStar[] = "K*";
 }  // namespace particleNames
 
 void polarToCartesian(double* pArray, double theta, double phi, double p) {
@@ -71,7 +70,6 @@ int main() {
   constexpr int particleNumber = 100;
   constexpr int particleCapacity = 200;
 
-  Timer timer{"total timer"};
   gRandom->SetSeed();
 
   Particle EventParticles[particleCapacity];
@@ -92,10 +90,8 @@ int main() {
 
   // initializing histograms
   TH1F* hTypes = new TH1F("types", "particle types", 7, 0., 7.);
-  // TODO: check that bin numbers is right
   TH1F* hTheta = new TH1F("theta", "theta", 500, 0., TMath::Pi());
   TH1F* hPhi = new TH1F("phi", "phi", 500, 0., 2 * TMath::Pi());
-  // TODO: check that bin range is right
   TH1F* hP = new TH1F("p", "momentum", 500, 0., 8.);
   TH1F* hPTrans = new TH1F("pTrans", "transverse momentum", 500, 0., 6.);
   TH1F* hEnergy = new TH1F("energy", "Energy", 500, 0., 8.);
@@ -141,10 +137,9 @@ int main() {
         EventParticles[i].Decay2body(
             EventParticles[particleNumber + overflow],
             EventParticles[particleNumber + overflow + 1]);
-            
+
         hInvMassDecay->Fill(EventParticles[particleNumber + overflow].invMass(
             EventParticles[particleNumber + overflow + 1]));
-        //  TODO: which histograms must also consider decayed particles?
         overflow += 2;
       }
 
@@ -168,8 +163,7 @@ int main() {
         auto& other_particle = EventParticles[j];
 
         hInvMass->Fill(particle.invMass(EventParticles[j]));
-        // TODO: what to do with K* particles that have 0 as charge?
-        // concordant or not?
+
         //  if particle charges are discordant
         if (particle.getCharge() * other_particle.getCharge() < 0) {
           hInvMassDiscordant->Fill(particle.invMass(other_particle));

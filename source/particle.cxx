@@ -4,7 +4,6 @@
 #include <cstring>
 #include <iostream>
 
-// todo: check if good practice, or makes sense
 int Particle::fNParticleType = 0;
 ParticleType* Particle::fParticleType[Particle::fMaxNumParticleType];
 
